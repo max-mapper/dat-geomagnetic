@@ -10,3 +10,5 @@ To run:
 npm install
 npm start
 ```
+
+`ʕ´•ᴥ•`ʔ`
