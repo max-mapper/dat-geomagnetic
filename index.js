@@ -38,5 +38,7 @@ function fetch() {
     })
     
     writeStream.end()
+    
+    setTimeout(fetch, 60000)
   })
 }
