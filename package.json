@@ -2,7 +2,7 @@
   "name": "dat-geomagnetic",
   "description": "Imports Earth magnetic field data values from www.swpc.noaa.gov every minute into dat",
   "keywords": ["noaa", "hyperdata"],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "node index.js"
   },
