@@ -7,7 +7,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "dat": "~2.4.2",
+    "dat": "maxogden/dat",
     "geomagnetic": "~0.0.1"
   },
   "license": "BSD"
