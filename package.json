@@ -1,14 +1,29 @@
 {
   "name": "dat-geomagnetic",
   "description": "Imports Earth magnetic field data values from www.swpc.noaa.gov every minute into dat",
-  "keywords": ["noaa", "hyperdata"],
-  "version": "0.0.2",
+  "keywords": [
+    "noaa",
+    "hyperdata",
+    "dat-importer"
+  ],
+  "version": "1.0.0",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "dat": "maxogden/dat",
-    "geomagnetic": "~0.0.1"
+    "debug": "^1.0.4",
+    "geomagnetic": "maxogden/geomagnetic"
   },
-  "license": "BSD"
+  "license": "BSD",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxogden/dat-geomagnetic.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/maxogden/dat-geomagnetic/issues"
+  },
+  "homepage": "https://github.com/maxogden/dat-geomagnetic"
 }

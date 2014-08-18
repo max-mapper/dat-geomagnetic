@@ -1,27 +1,30 @@
-var host = process.env.PORT ? '0.0.0.0' : '127.0.0.1'
-var port = process.env.PORT || 8080
 var magnetic = require('geomagnetic')
+var debug = require('debug')('dat-geomagnetic')
 
-var Dat = require('dat')
-
-var dat = new Dat('./data/geomagnetic', function ready(err) {
-  dat.listen(port, function() {
-    fetch()
-  })
-})
-
-function fetch() {
-  console.log(JSON.stringify({"fetching": new Date()}))
-  magnetic(function(err, data) {
-    setTimeout(fetch, 60000)
+module.exports = function(dat, ready) {
+  
+  // call the dat ready callback immediately so it doesn't wait for us
+  ready()
+  
+  fetch()
+  
+  function fetch() {
+    magnetic(function(err, data) {
+      // fetch every minute
+      setTimeout(fetch, 60000)
     
-    if (err) {
-      return console.error(err)
-    }
+      if (err) {
+        return console.error('error getting geomagnetic data', err)
+      }
     
-    data.map(function(d) {
-      d.key = new Date(d.timestamp).toISOString()
-      dat.put(d, function(err, updated) {})
+      data.map(function(d) {
+        // data with the same key will conflict and not get imported
+        d.key = new Date(d.timestamp).toISOString()
+        dat.put(d, function(err, updated) {
+          if (err) return debug('error and/or conflict', err)
+          debug('put new entry', updated)
+        })
+      })
     })
-  })
+  }
 }
